@@ -1,0 +1,51 @@
+1 -> node index.js
+
+2 -> node --prof index.js
+
+Se iniciara el servidor en el puerto 8080
+
+3 -> artillery quick -c 50 -n 20 "http://localhost:8080/info" > artillery-info.log
+
+4-> node --prof-process info-v8.log > info.log.txt
+
+5 -> npm start
+
+desafio2@1.0.0 start
+> 0x index.js
+
+ProfilingHttp server started on port 8080
+
+6 -> npm run test
+
+> desafio2@1.0.0 test
+> node benchmarks.js
+
+Running all benchmarks in parallel ...
+Running 20s test @ http://localhost:8080/info
+100 connections
+
+
+┌─────────┬───────┬────────┬────────┬────────┬───────────┬──────────┬────────┐
+│ Stat    │ 2.5%  │ 50%    │ 97.5%  │ 99%    │ Avg       │ Stdev    │ Max    │
+├─────────┼───────┼────────┼────────┼────────┼───────────┼──────────┼────────┤
+│ Latency │ 90 ms │ 109 ms │ 142 ms │ 162 ms │ 111.41 ms │ 16.11 ms │ 258 ms │
+└─────────┴───────┴────────┴────────┴────────┴───────────┴──────────┴────────┘
+┌───────────┬────────┬────────┬─────────┬─────────┬─────────┬────────┬────────┐
+│ Stat      │ 1%     │ 2.5%   │ 50%     │ 97.5%   │ Avg     │ Stdev  │ Min    │
+├───────────┼────────┼────────┼─────────┼─────────┼─────────┼────────┼────────┤
+│ Req/Sec   │ 600    │ 600    │ 900     │ 1000    │ 894.7   │ 89.62  │ 600    │
+├───────────┼────────┼────────┼─────────┼─────────┼─────────┼────────┼────────┤
+│ Bytes/Sec │ 844 kB │ 844 kB │ 1.27 MB │ 1.41 MB │ 1.26 MB │ 126 kB │ 844 kB │
+└───────────┴────────┴────────┴─────────┴─────────┴─────────┴────────┴────────┘
+
+Req/Bytes counts sampled once per second.
+# of samples: 20
+
+18k requests in 20.12s, 25.2 MB read
+
+Flamming graph:
+Process exited, generating flamegraph(node:7488) [DEP0164] DeprecationWarning: Implicit coercion to integer for exit code is deprecated.
+(Use `node.EXE --trace-deprecation ...` to show where the warning was created)
+
+no isolate logfile found
+¿Desea terminar el trabajo por lotes (S/N)?

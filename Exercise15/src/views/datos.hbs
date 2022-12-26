@@ -1,0 +1,31 @@
+<div class="container text-center my-3">
+    <div class="jumbotron" style="background-color: green;color: white;">
+        <h1>USER OK LOGIN!</h1>
+        <h2><i>Bienvenido {{username}}</i></h2>
+        <button class="btn btn-danger my-5" onclick="location.href='/logout'">LOGOUT</button>
+    </div>
+    <br>
+    <div class="jumbotron">
+    <h1>Vista de Productos</h1>
+    <br>
+    {{#if hayProductos}}
+    <div class="table-responsive">
+        <table class="table table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+            {{#each productos}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>S/ {{this.price}}</td>
+                <td><img width="50" src={{this.thumbnail}} alt="not found"></td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    {{else}}
+    <h3 class="alert alert-warning">No se encontraron productos</h3>
+    {{/if}}
+</div>
